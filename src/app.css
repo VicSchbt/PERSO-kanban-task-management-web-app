@@ -21,6 +21,34 @@ body {
 	height: 100dvh;
 }
 
+.content-container {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.task-card {
+	width: 75dvw;
+}
+@media screen and (min-width: 650px) {
+	.task-card {
+		width: 30dvw;
+	}
+}
+
+.body-m {
+	font-weight: bold;
+	font-size: 0.75rem;
+	line-height: 0.9375rem;
+}
+
+.heading-s {
+	font-weight: bold;
+	font-size: 0.75rem;
+	line-height: 0.9375rem;
+	letter-spacing: 2.4px;
+}
+
 .heading-m {
 	font-weight: bold;
 	font-size: 0.9375rem;
