@@ -1,20 +1,27 @@
 <script lang="ts">
 	import { NO_MODAL } from '$lib/utils';
-	import { setContext, type Snippet } from 'svelte';
+	import { type Snippet } from 'svelte';
 	import { appState } from '../../routes/state.svelte';
 
 	interface Props {
 		children: Snippet;
 		showModal: boolean;
+		onModalClose: () => void;
 	}
 
-	let { showModal = $bindable(), children }: Props = $props();
+	let { showModal = $bindable(), children, onModalClose }: Props = $props();
 
 	let dialog: HTMLDialogElement | undefined = $state();
 
 	$effect(() => {
 		if (dialog && showModal) dialog.showModal();
 	});
+
+	const handleClose = () => {
+		appState.currentModal = NO_MODAL;
+		onModalClose();
+		showModal = false;
+	};
 </script>
 
 {#if showModal}
@@ -24,10 +31,7 @@
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <dialog
 	bind:this={dialog}
-	onclose={() => {
-		appState.currentModal = NO_MODAL;
-		showModal = false;
-	}}
+	onclose={handleClose}
 	onclick={(e) => {
 		if (e.target === dialog) dialog.close();
 	}}

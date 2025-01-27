@@ -1,7 +1,5 @@
 <script lang="ts">
 	import type { Task } from '$lib/types';
-	import { setContext } from 'svelte';
-	import { selectedTask } from '../../stores';
 	import { TASK_DETAILS_MODAL } from '$lib/utils';
 	import { appState } from '../../routes/state.svelte';
 
@@ -14,7 +12,7 @@
 	const totalSubtasks = task.subtasks.length;
 
 	const handleClickOnCard = () => {
-		selectedTask.set(task);
+		appState.selectedTask = task;
 		appState.currentModal = TASK_DETAILS_MODAL;
 	};
 </script>
