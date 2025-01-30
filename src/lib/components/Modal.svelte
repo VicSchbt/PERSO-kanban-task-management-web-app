@@ -35,8 +35,7 @@
 	onclick={(e) => {
 		if (e.target === dialog) dialog.close();
 	}}
-	class=" absolute left-1/2 top-1/2 z-20 w-11/12 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white p-3"
+	class=" absolute left-1/2 top-1/2 z-20 w-11/12 -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white p-6"
 >
 	{@render children?.()}
-	<button type="button" onclick={() => dialog?.close()}> Close </button>
 </dialog>
