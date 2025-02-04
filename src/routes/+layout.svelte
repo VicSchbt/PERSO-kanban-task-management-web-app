@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import Button from '$lib/components/Button.svelte';
+	import Button from '$lib/components/common/Button.svelte';
 	import { activeBoardIndex, boards } from '../stores';
 	import { get } from 'svelte/store';
 
@@ -9,6 +9,7 @@
 	import TaskDetailsModal from '$lib/components/TaskDetailsModal.svelte';
 	import { TASK_DETAILS_MODAL } from '$lib/utils';
 	import { appState } from './state.svelte';
+	import Heading from '$lib/components/common/Heading.svelte';
 
 	interface Props {
 		data: PageData;
@@ -30,7 +31,9 @@
 <header class="sticky flex flex-none items-center justify-between bg-white px-4 py-5">
 	<div class="flex items-center gap-4">
 		<img src="/logo-mobile.svg" alt="logo" />
-		<h1 class="heading-l">{get(boards)[get(activeBoardIndex)].name}</h1>
+		<Heading headingLevel={appState.basedHeadingLevel} classStyle="heading-l"
+			>{get(boards)[get(activeBoardIndex)].name}</Heading
+		>
 
 		<img src="/icon-chevron-down.svg" alt="open menu" />
 	</div>
