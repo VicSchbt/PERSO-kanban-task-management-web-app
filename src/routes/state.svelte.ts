@@ -1,14 +1,9 @@
-import type { Task } from '$lib/types';
-import { NO_MODAL } from '$lib/utils';
-
 interface AppState {
-	currentModal: string;
-	selectedTask: Task | null;
-	basedHeadingLevel: number;
+	basedHeadingLevel: 1;
+	currentBoardId: string | null;
 }
 
 export const appState: AppState = $state({
-	currentModal: NO_MODAL,
-	selectedTask: null,
-	basedHeadingLevel: 1
+	basedHeadingLevel: 1,
+	currentBoardId: null
 });

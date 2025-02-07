@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { NO_MODAL } from '$lib/utils';
 	import { type Snippet } from 'svelte';
-	import { appState } from '../../routes/state.svelte';
 
 	interface Props {
 		children: Snippet;
@@ -18,7 +16,6 @@
 	});
 
 	const handleClose = () => {
-		appState.currentModal = NO_MODAL;
 		onModalClose();
 		showModal = false;
 	};

@@ -6,8 +6,6 @@
 
 	import type { PageData } from './$types';
 	import { type Snippet } from 'svelte';
-	import TaskDetailsModal from '$lib/components/TaskDetailsModal.svelte';
-	import { TASK_DETAILS_MODAL } from '$lib/utils';
 	import { appState } from './state.svelte';
 	import Heading from '$lib/components/common/Heading.svelte';
 
@@ -18,14 +16,6 @@
 
 	let { data, children }: Props = $props();
 	boards.set(data.boards);
-
-	let showTaskDetailsModal: boolean = $state(false);
-
-	$effect(() => {
-		if (appState.currentModal === TASK_DETAILS_MODAL) {
-			showTaskDetailsModal = true;
-		}
-	});
 </script>
 
 <header class="sticky flex flex-none items-center justify-between bg-white px-4 py-5">
@@ -45,5 +35,3 @@
 	</div>
 </header>
 {@render children()}
-
-<TaskDetailsModal bind:showTaskDetailsModal />

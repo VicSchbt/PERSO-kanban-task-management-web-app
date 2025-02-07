@@ -1,7 +1,9 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import type { Task } from '$lib/types';
-	import { TASK_DETAILS_MODAL } from '$lib/utils';
-	import { appState } from '../../routes/state.svelte';
+	import { buildTaskDetailUrl } from '$lib/utils';
+	import { get } from 'svelte/store';
+	import { board } from '../../stores';
 
 	export let task: Task;
 
@@ -12,8 +14,7 @@
 	const totalSubtasks = task.subtasks.length;
 
 	const handleClickOnCard = () => {
-		appState.selectedTask = task;
-		appState.currentModal = TASK_DETAILS_MODAL;
+		goto(buildTaskDetailUrl(get(board).id, task.id), { invalidateAll: true });
 	};
 </script>
 

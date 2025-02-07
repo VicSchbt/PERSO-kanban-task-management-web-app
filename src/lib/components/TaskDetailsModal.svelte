@@ -1,18 +1,18 @@
 <script lang="ts">
 	import type { Task } from '$lib/types';
 	import Modal from './Modal.svelte';
-	import { appState } from '../../routes/state.svelte';
 	import { get } from 'svelte/store';
-	import { taskStatus } from '../../stores';
+	import { board, taskStatus } from '../../stores';
 	import StatusSelect from './StatusSelect.svelte';
+	import { goto } from '$app/navigation';
+	import { buildBoardUrl } from '$lib/utils';
 
 	interface Props {
 		showTaskDetailsModal: boolean;
+		task: Task | null;
 	}
 
-	let { showTaskDetailsModal = $bindable() }: Props = $props();
-
-	let task: Task | null = $derived(appState.selectedTask);
+	let { showTaskDetailsModal = $bindable(), task }: Props = $props();
 
 	// TODO: might be replace by a store or a subscribe function
 	const completedSubtasks = () =>
@@ -22,7 +22,7 @@
 	const totalSubtasks = () => (task ? task.subtasks.length : 0);
 
 	const onModalClose = () => {
-		appState.selectedTask = null;
+		goto(buildBoardUrl(get(board).id));
 	};
 </script>
 

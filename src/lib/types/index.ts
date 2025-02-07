@@ -4,6 +4,7 @@ export type Subtask = {
 };
 
 export type Task = {
+	id: string;
 	title: string;
 	description: string;
 	status: 'Todo' | 'Doing' | 'Done';
@@ -16,6 +17,7 @@ export type Column = {
 };
 
 export type Board = {
+	id: string;
 	name: string;
 	columns: Column[];
 };
