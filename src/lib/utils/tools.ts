@@ -5,3 +5,6 @@ export const buildBoardUrl = (boardId: string) => `/board/${boardId}`;
 
 export const buildTaskDetailUrl = (boardId: string, taskId: string) =>
 	`/board/${boardId}/task-details/${taskId}`;
+
+export const buildEditTaskUrl = (boardId: string, taskId: string) =>
+	`/board/${boardId}/edit-task/${taskId}`;

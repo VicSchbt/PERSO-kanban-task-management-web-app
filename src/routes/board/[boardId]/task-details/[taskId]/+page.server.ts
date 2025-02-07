@@ -8,6 +8,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	const selectedTask = findSelectedTask(board, params.taskId);
 
 	return {
+		board,
 		selectedTask
 	};
 };
